@@ -1,7 +1,8 @@
 import express from "express";
 import http from "http";
-import PORT from "./config/serverConfig";
 import { Server } from "socket.io";
+import PORT from "./config/serverConfig";
+import roomHAndler from "./handlers/RoomHAndler";
 
 const app = express();
 
@@ -16,11 +17,11 @@ const io = new Server(server, {
 
 io.on("connection", (socket) => {
     console.log("New user connected");
-
+    roomHAndler(socket);
     socket.on("disconnect", () => {
         console.log("User disconnected");
-    })
-})
+    });
+});
 
 server.listen(PORT, () => {
     console.log("Server is connected at the port: ", PORT);
