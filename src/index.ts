@@ -2,7 +2,7 @@ import express from "express";
 import http from "http";
 import { Server } from "socket.io";
 import PORT from "./config/serverConfig";
-import roomHAndler from "./handlers/RoomHAndler";
+import roomHAndler from "./handlers/RoomHandler";
 
 const app = express();
 
